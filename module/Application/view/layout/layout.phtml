@@ -1,0 +1,76 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle($this->translate('News'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php
+            $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0');
+            echo $this->headMeta();
+            echo $this->plugin('HeadLink');
+            echo $this->plugin('HeadStyle');
+            //echo $this->headScript()->prependFile('//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js');
+            echo $this->plugin('HeadScript');
+//            echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+//            ->offsetSetStylesheet(1, $this->basePath() . '/css/style.css')
+//            ->offsetSetStylesheet(10, $this->basePath() . '/css/ui-lightness/jquery-ui-1.10.3.custom.min.css')
+//            ->offsetSetStylesheet(20, $this->basePath() . '/css/bootstrap-theme.min.css')
+//            ->offsetSetStylesheet(30, $this->basePath() . '/css/bootstrap.min.css')
+//            ->offsetSetStylesheet(31, $this->basePath() . '/css/tablesorter/theme.bootstrap.css')
+//            ;
+        ?>
+
+    </head>
+    <body>
+        <?php echo $this
+            ->navigation('Navigation')
+            ->menu()
+            ->setUlClass('nav')
+            ->setPartial(array('partial/topnav.phtml', 'default'));
+        ?>
+
+        <?php /*<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>">&nbsp;<?php echo $this->translate('Say Hello') ?></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+         * */?>
+         
+        <div class="container">
+                        <?php
+            echo $this->flashMessenger()
+                ->setMessageOpenFormat('<div%s><strong>Error:</strong> ')
+                ->setMessageSeparatorString('<br>')
+                ->setMessageCloseString('</div>')
+                ->render('error', array('alert', 'alert-danger'));
+            ?>
+
+            <?php
+            echo $this->flashMessenger()
+                ->setMessageOpenFormat('<div%s>')
+                ->setMessageSeparatorString('<br>')
+                ->setMessageCloseString('</div>')
+                ->render('success', array('alert', 'alert-success'));
+            ?>
+            <?php echo $this->content; ?>
+            <hr>
+            <footer>
+                <p>&copy; 2015 - <?php echo date('Y') ?> by vhristov <?php echo $this->translate('All rights reserved.') ?></p>
+            </footer>
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

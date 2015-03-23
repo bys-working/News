@@ -1,0 +1,11 @@
+<div class="container">
+
+    <?php echo $this->flashMessenger()->render(); ?>
+    <h1 class="page-header" >Add news</h1>
+
+    <?php
+    echo $this->strokerFormPrepare($form->getName());
+    echo $this->formTwb($form, DluTwBootstrap\Form\FormUtil::FORM_TYPE_HORIZONTAL);
+    ?>
+
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+    <h1 class="page-header" >Edit Role <sup><span class="label label-info"><?php echo $username; ?></span></sup></h1>
+
+    <?php
+    $form->prepare();
+    $form->setAttribute('method', 'post');
+
+    echo $this->formTwb()->openTag($form, DluTwBootstrap\Form\FormUtil::FORM_TYPE_HORIZONTAL);
+
+    echo $this->formRowTwb($form->get('role_id'), DluTwBootstrap\Form\FormUtil::FORM_TYPE_HORIZONTAL);
+    echo $this->formElementTwb($form->get('user_id'), DluTwBootstrap\Form\FormUtil::FORM_TYPE_HORIZONTAL);
+    echo '<div class="form-actions">';
+    echo $this->formElementTwb($form->get('submit'), DluTwBootstrap\Form\FormUtil::FORM_TYPE_HORIZONTAL);
+    echo '<a class="btn" href="' . $this->url('users') . '">Cancel</a>';
+    echo '</div>';
+
+    echo $this->formTwb()->closeTag();
+    //echo $this->formTwb($form, DluTwBootstrap\Form\FormUtil::FORM_TYPE_HORIZONTAL);
+    ?>
+</div>
